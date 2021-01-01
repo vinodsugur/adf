@@ -6,22 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "azuredatafactorytestv1"
-		},
-		"AzureDataLakeStorage2_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2'"
-		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://@{linkedService().sa}.dfs.core.windows.net"
-		},
-		"AzureDataLakeStorage2_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://vsdst.dfs.core.windows.net"
-		},
-		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"type": "string",
-			"defaultValue": "@{linkedService().P_FunctionAPPURL}"
 		}
 	},
 	"variables": {
@@ -68,11 +52,9 @@
 										"cntr": "cntr",
 										"directory": "test",
 										"file": "file.csv"
-									},
-									"sink1": {}
+									}
 								}
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -91,42 +73,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/dataflow1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Azure Function1",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "fn_HttpTrigger",
-							"method": "POST",
-							"headers": {},
-							"body": "{\\\"customer\\\":\\\"PCH\\\",\\\"product\\\":\\\"ICM\\\"}"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction1",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]"
 			]
 		},
 		{
@@ -221,7 +167,7 @@
 				"type": "AzureBlobFS",
 				"annotations": [],
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]",
+					"url": "https://@{linkedService().sa}.dfs.core.windows.net",
 					"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkFaVVJFREFUQUZBQ1RPUllURVNUVjFfN2Q5Mzg4ODEtNzVjOC00NTIyLWJlZDYtYWUyMmNkYmE4ZjMxIg0KfQ=="
 				},
 				"parameters": {
@@ -241,10 +187,10 @@
 				"annotations": [],
 				"type": "AzureBlobFS",
 				"typeProperties": {
-					"url": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]",
+					"url": "https://vsdst.dfs.core.windows.net",
 					"accountKey": {
 						"type": "SecureString",
-						"value": "[parameters('AzureDataLakeStorage2_accountKey')]"
+						"value": "**********"
 					}
 				}
 			},
@@ -258,7 +204,7 @@
 				"type": "AzureFunction",
 				"annotations": [],
 				"typeProperties": {
-					"functionAppUrl": "[parameters('AzureFunction1_properties_typeProperties_functionAppUrl')]",
+					"functionAppUrl": "@{linkedService().P_FunctionAPPURL}",
 					"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkFaVVJFREFUQUZBQ1RPUllURVNUVjFfZTBjMjRkNDAtZjU3ZS00OTdhLWE2NzEtOWQ2NGI0MDExMjY3Ig0KfQ=="
 				},
 				"parameters": {

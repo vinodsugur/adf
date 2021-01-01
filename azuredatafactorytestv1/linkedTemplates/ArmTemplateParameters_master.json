@@ -5,11 +5,17 @@
 		"factoryName": {
 			"value": "azuredatafactorytestv1"
 		},
-		"AzureFunction1_functionKey": {
+		"AzureDataLakeStorage2_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://@{linkedService().sa}.dfs.core.windows.net"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://vsdst.dfs.core.windows.net"
+		},
 		"AzureFunction1_properties_typeProperties_functionAppUrl": {
-			"value": "https://fn-metadata.azurewebsites.net"
+			"value": "@{linkedService().P_FunctionAPPURL}"
 		},
 		"containerUri": {
 			"value": ""
