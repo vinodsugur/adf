@@ -19,7 +19,10 @@
 						"referenceName": "dataflow1",
 						"type": "DataFlowReference",
 						"parameters": {
-							"sa": "\"vssrc2\"",
+							"sa": {
+								"value": "'@{pipeline().parameters.sa}'",
+								"type": "Expression"
+							},
 							"cntr": "\"cntr\"",
 							"directory": "\"test\"",
 							"file": "\"file.csv\""
