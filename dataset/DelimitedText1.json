@@ -5,7 +5,10 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"sa": "@dataflow().parameters.sa"
+				"sa": {
+					"value": "@dataset().sa",
+					"type": "Expression"
+				}
 			}
 		},
 		"parameters": {
