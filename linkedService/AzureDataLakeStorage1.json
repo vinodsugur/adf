@@ -10,7 +10,7 @@
 		"parameters": {
 			"sa": {
 				"type": "String",
-				"defaultValue": "@dataset().parameters.sa"
+				"defaultValue": "@pipeline().parameters.sa"
 			}
 		}
 	}
