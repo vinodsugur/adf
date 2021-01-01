@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Azure Function1",
-				"type": "AzureFunctionActivity",
+				"name": "dataflow1",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -15,16 +15,44 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "fn_HttpTrigger",
-					"method": "POST",
-					"body": "{\\\"customer\\\":\\\"PCH\\\",\\\"product\\\":\\\"ICM\\\"}"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureFunction1",
-					"type": "LinkedServiceReference"
+					"dataflow": {
+						"referenceName": "dataflow1",
+						"type": "DataFlowReference",
+						"parameters": {
+							"sa": {
+								"value": "'@{pipeline().parameters.sa}'",
+								"type": "Expression"
+							},
+							"cntr": "\"cntr\"",
+							"directory": "\"test\"",
+							"file": "\"file.csv\""
+						},
+						"datasetParameters": {
+							"source1": {
+								"sa": {
+									"value": "@pipeline().parameters.sa",
+									"type": "Expression"
+								},
+								"cntr": "cntr",
+								"directory": "test",
+								"file": "file.csv"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
+		"parameters": {
+			"sa": {
+				"type": "string",
+				"defaultValue": "vssrc2"
+			}
+		},
 		"annotations": []
 	}
 }
