@@ -41,6 +41,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"sa": {
+				"type": "string",
+				"defaultValue": "vssrc1"
+			}
+		},
 		"annotations": []
 	}
 }
