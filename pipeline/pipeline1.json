@@ -29,7 +29,10 @@
 						},
 						"datasetParameters": {
 							"source1": {
-								"sa": "vssrc1",
+								"sa": {
+									"value": "@pipeline().parameters.sa",
+									"type": "Expression"
+								},
 								"cntr": "cntr",
 								"directory": "test",
 								"file": "file.csv"
