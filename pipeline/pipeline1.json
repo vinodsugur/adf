@@ -47,7 +47,7 @@
 				}
 			}
 		],
-		"concurrency": 1,
+		"concurrency": 2,
 		"parameters": {
 			"sa": {
 				"type": "string",
