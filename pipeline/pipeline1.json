@@ -23,6 +23,14 @@
 							"cntr": "\"cntr\"",
 							"directory": "\"test\"",
 							"file": "\"file.csv\""
+						},
+						"datasetParameters": {
+							"source1": {
+								"sa": "vssrc1",
+								"cntr": "cntr",
+								"directory": "test",
+								"file": "file.csv"
+							}
 						}
 					},
 					"compute": {
