@@ -19,7 +19,7 @@
 						"referenceName": "dataflow1",
 						"type": "DataFlowReference",
 						"parameters": {
-							"sa": "\"vssrc1\"",
+							"sa": "\"vssrc2\"",
 							"cntr": "\"cntr\"",
 							"directory": "\"test\"",
 							"file": "\"file.csv\""
@@ -44,7 +44,7 @@
 		"parameters": {
 			"sa": {
 				"type": "string",
-				"defaultValue": "vssrc1"
+				"defaultValue": "vssrc2"
 			}
 		},
 		"annotations": []
