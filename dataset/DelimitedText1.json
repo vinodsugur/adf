@@ -5,7 +5,7 @@
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"sa": "@pipeline().parameters.sa"
+				"sa": "@dataflow().parameters.sa"
 			}
 		},
 		"parameters": {
