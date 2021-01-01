@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"functionName": "fn_HttpTrigger",
 					"method": "POST",
-					"body": {
-						"customer": "PCH",
-						"product": "ICM"
-					}
+					"body": "{\\\"customer\\\":\\\"PCH\\\",\\\"product\\\":\\\"ICM\\\"}"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction1",
